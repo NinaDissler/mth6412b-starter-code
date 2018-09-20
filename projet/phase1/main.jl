@@ -5,18 +5,19 @@ include("edge.jl")
 include("graph.jl")
 include("read_stsp.jl")
 
-filename="./instances/stsp/bayg29.tsp"
 
+""" Fichier a trasncrire """
+filename="./instances/stsp/bayg29.tsp"
 hdr=read_header(filename)
 
-""" Les noeuds dans la fonction read_nodes sont renvoyés sous forme d'un dictionnaire"""
+""" Lecture des noeuds du fichier.tsp -> dictionnaire[noeud]=> data"""
 dict_nodes=read_nodes(hdr,filename)
 
-""" La fonction read_edges renvoie les arretes dans une structure (entier,entier,string)
-qu'il faut convertir en noeud,noeud,entier"""
+""" Lecture des arretes du fichier.tsp ->
+liste contenant des tuple (entier entier string) representant (noeud, noeud, poids)"""
 list_edges=read_edges(hdr,filename)
 
-""" Initialisation du graphe"""
+""" Initialisation du graphe avec le premier noeud et la première arrête convertis"""
 
 g=Graph("MyGraph",[Node(string(1),dict_nodes[1])],[Edge(Node(string(list_edges[1][1]+1),dict_nodes[list_edges[1][1]+1]),Node(string(list_edges[1][2]+1),dict_nodes[list_edges[1][2]+1]),parse(Int64,list_edges[1][3]))])
 
@@ -35,4 +36,5 @@ for i in 2:length(list_edges)
     add_edge!(g,Edge(firstnode,secondnode,edgeweight))
 end
 
+""" Affichage du graphe"""
 show(g)
