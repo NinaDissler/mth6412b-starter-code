@@ -12,22 +12,23 @@ Exemple:
 """
 
 mutable struct Edge{T} <: AbstractEdge{T}
-    nodes::Array{Node{T},1}
-    weigth::Int64
+    nodeA::Node{T}
+    nodeB::Node{T}
+    weight::Int64
 end
 
 # on présume que toutes les arretes dérivant d'AbstractEdge
 # posséderont des champs `noeud`, `data` et `voisins`.
 
 
-"""Renvoie le poid d'une arrete"""
-weigth(edge::AbstractEdge) = edge.weigth
+"""Renvoie le poids d'une arrete"""
+weight(edge::AbstractEdge) = edge.weight
 
 """Renvoie les noeuds d'une arrete"""
-nodes(edge::AbstractEdge) = name.(edge.nodes)
+nodes(edge::AbstractEdge) = [edge.nodeA,edge.nodeB]
 
 """Affiche une arrête"""
 function show(edge::AbstractEdge)
-    s = string("Nodes ", nodes(edge), ", Weigth ", weigth(edge))
+    s = string("Nodes ", name.(nodes(edge)), ", Weigth ", weight(edge))
     println(s)
 end
