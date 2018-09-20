@@ -34,3 +34,5 @@ for i in 2:length(list_edges)
     edgeweight=parse(Int64,list_edges[i][3])
     add_edge!(g,Edge(firstnode,secondnode,edgeweight))
 end
+
+show(g)
