@@ -7,7 +7,7 @@ abstract type AbstractEdge{T} end
 
 Exemple:
 
-        edge = Edge(pare_noeud, existe?, poids)
+        edge = Edge("James", "Kirk", 5)
 
 """
 
@@ -17,18 +17,20 @@ mutable struct Edge{T} <: AbstractEdge{T}
     weight::Int64
 end
 
-# on présume que toutes les arretes dérivant d'AbstractEdge
-# posséderont des champs `noeud`, `data` et `voisins`.
+# on présume que toutes les arrêtes dérivant d'AbstractEdge
+# posséderont des champs `nodeA`, `nodeB` et `weight`.
 
-
-"""Renvoie le poids d'une arrete"""
-weight(edge::AbstractEdge) = edge.weight
+"""Renvoie les noeuds d'une arrête"""
+nodes(edge::AbstractEdge) = [edge.nodeA,edge.nodeB]
 
 """Renvoie les noeuds d'une arrete"""
 nodes(edge::AbstractEdge) = [edge.nodeA,edge.nodeB]
 
+"""Renvoie le poid d'une arrête"""
+weight(edge::AbstractEdge) = edge.weight
+
 """Affiche une arrête"""
 function show(edge::AbstractEdge)
-    s = string("Nodes ", name.(nodes(edge)), ", Weigth ", weight(edge))
+    s = string("Nodes: ", name.(nodes(edge)), "; Weight: ", weight(edge))
     println(s)
 end
