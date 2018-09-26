@@ -4,7 +4,7 @@ import Base.show
 abstract type AbstractConnectedComponent{T} end
 
 """Type representant une composante connexe"""
-mutable struct ConnectedComponent <: AbstractConnectedComponent{T}
+mutable struct ConnectedComponent{T} <: AbstractConnectedComponent{T}
 		name::String
         graph::Graph{T}
         nodes::Vector{Node{T}}
@@ -35,7 +35,7 @@ function show(component::ConnectedComponent)
 	component_graph = graph(component)
 	component_nb_nodes = nb_nodes(component)
 	component_nb_edges = nb_edges(component)
-	println("Connected component ", component_name, "in ", name(component_graph)," has ", component_nb_nodes, " nodes")
+	println("Connected component ", component_name, " in ", name(component_graph)," has ", component_nb_nodes, " nodes")
 	for node in nodes(component)
 		show(node)
 	end
