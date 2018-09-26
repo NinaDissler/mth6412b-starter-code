@@ -11,6 +11,9 @@ mutable struct ConnectedComponent{T} <: AbstractConnectedComponent{T}
         edges::Vector{Edge{T}}
 end
 
+"""Création d'une composante connexe vide"""
+ConnectedComponent{T}(name,graph) where T = ConnectedComponent(name, graph, Node{T}[], Edge{}[])
+
 """Renvoie le nom de la composante connexe."""
 name(component::AbstractConnectedComponent) = component.name
 
