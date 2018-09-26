@@ -23,9 +23,6 @@ end
 """Renvoie les noeuds d'une arrête"""
 nodes(edge::AbstractEdge) = [edge.nodeA,edge.nodeB]
 
-"""Renvoie les noeuds d'une arrete"""
-nodes(edge::AbstractEdge) = [edge.nodeA,edge.nodeB]
-
 """Renvoie le poid d'une arrête"""
 weight(edge::AbstractEdge) = edge.weight
 
