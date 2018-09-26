@@ -26,6 +26,7 @@ function add_node!(graph::Graph{T}, node::Node{T}) where T
 	graph
 end
 
+"""Ajoute une arrête au graphe."""
 function add_edge!(graph::Graph{T}, edge::Edge{T}) where T
 	push!(graph.edges, edge)
 	graph
