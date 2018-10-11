@@ -9,9 +9,6 @@ mutable struct ConnectedComponent{T} <: AbstractConnectedComponent{T}
         edges::Vector{Edge{T}}
 end
 
-"""Constructeur"""
-ConnectedComponent() = ConnectedComponent(Node{Any}[],Edge{Any}[])
-
 """Renvoie les noeuds de la composante connexe"""
 nodes(component::AbstractConnectedComponent) = component.nodes
 

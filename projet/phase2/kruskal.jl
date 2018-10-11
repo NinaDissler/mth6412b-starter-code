@@ -1,6 +1,5 @@
 import Base.show
 
-include("../phase1/main.jl")
 include("connected-component.jl")
 include("CCfusion.jl")
 

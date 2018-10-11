@@ -4,6 +4,7 @@ include("node.jl")
 include("edge.jl")
 include("graph.jl")
 include("read_stsp.jl")
+include("../phase2/kruskal.jl")
 filename="./instances/stsp/bayg29.tsp"
 
 function main(filename)
@@ -37,6 +38,6 @@ function main(filename)
         add_edge!(g,Edge(firstnode,secondnode,edgeweight))
     end
 
-    """ Affichage du graphe"""
-    return(g)
+    """ Un arbre de recouvrement minimal """
+    show(kruskal(g))
 end
