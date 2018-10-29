@@ -4,7 +4,7 @@ include("node.jl")
 include("edge.jl")
 include("graph.jl")
 include("read_stsp.jl")
-include("../phase2/kruskal.jl")
+include("kruskal.jl")
 filename="./instances/stsp/bayg29.tsp"
 
 function main(filename)
