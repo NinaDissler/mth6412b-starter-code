@@ -1,5 +1,5 @@
 
-include("projet/phase1/node.jl")
+include("node.jl")
 
 """ Définition préalable d'un noeud dans un arbre avec une donnée et un rang"""
 mutable struct TreeNode{T} <: AbstractNode{T}

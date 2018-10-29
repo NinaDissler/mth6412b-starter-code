@@ -1,11 +1,12 @@
+include("node.jl")
 
-include("projet/phase1/node.jl")
+import Base.isless,Base.==
 
-mutable struct PrimNode{T} <: AbstractNode {T}
-    name::string
-    data::{T}
+mutable struct PrimNode{T} <: AbstractNode{T}
+    name::String
+    data::T
     min_weight::Union{Int64,typeof(Inf)}
-    parent::PrimNode{T}
+    parent::Union{PrimNode{T},Nothing}
 end
 
 # Name et data déjà codés dans la phase 1
@@ -17,4 +18,6 @@ min_weight(node::AbstractNode)=node.min_weight
 priority(node::AbstractNode)=node.min_weight
 
 """ Renvoie le parent du noeud """
-parent(node::AbstractNode)=node.parent
+get_parent(node::AbstractNode)=node.parent
+
+==(n::AbstractNode, m::AbstractNode) = (name(n)==name(m) && data(n)==data(m))
