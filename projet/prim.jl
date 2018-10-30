@@ -4,11 +4,11 @@ using Test
 import Base.length
 
 #Algorithme de Prim
-# include("prim_node.jl")
+include("prim_node.jl")
 include("prim_priority_queue.jl")
 include("graph.jl")
 include("neighbours.jl")
-include("build_adj_list.jl")
+# include("build_adj_list.jl")
 include("distance.jl")
 
 function prim(graph::AbstractGraph{T},s::AbstractNode{T}) where T
