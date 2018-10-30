@@ -27,3 +27,5 @@ function push!(q::PrimPriorityQueue{T}, item::PrimNode{T}) where T
 end
 
 is_empty(q::AbstractPriorityQueue) = length(q.items) == 0
+
+length(q::AbstractPriorityQueue) = length(q.items)
