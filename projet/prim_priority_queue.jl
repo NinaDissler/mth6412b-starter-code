@@ -1,5 +1,6 @@
 import Base.popfirst!
 import Base.push!
+import Base.length
 
 abstract type AbstractPriorityQueue{T} end
 
@@ -26,6 +27,7 @@ function push!(q::PrimPriorityQueue{T}, item::PrimNode{T}) where T
     push!(q.items,item)
 end
 
+is_not_empty(q::AbstractPriorityQueue) = length(q.items) != 0
 is_empty(q::AbstractPriorityQueue) = length(q.items) == 0
 
 length(q::AbstractPriorityQueue) = length(q.items)

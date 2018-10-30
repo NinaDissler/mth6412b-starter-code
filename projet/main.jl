@@ -1,4 +1,7 @@
 import Base.show
+using Test
+import Base.length
+
 
 include("node.jl")
 include("edge.jl")
@@ -39,7 +42,8 @@ function main(filename)
         add_edge!(g,Edge(firstnode,secondnode,edgeweight))
     end
 
-    """ Un arbre de recouvrement minimal """
-    show(kruskal(g))
-    show(prim(g,g.nodes[1]))
+    g
+    # """ Un arbre de recouvrement minimal """
+    # show(kruskal(g))
+    # show(prim(g,g.nodes[1]))
 end

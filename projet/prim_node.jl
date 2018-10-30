@@ -20,4 +20,12 @@ priority(node::AbstractNode)=(1/node.min_weight)
 """ Renvoie le parent du noeud """
 get_parent(node::AbstractNode)=node.parent
 
-==(n::AbstractNode, m::AbstractNode) = (name(n)==name(m) && data(n)==data(m))
+function set_min_weight!(node::AbstractNode,val::Int64)
+    node.min_weight=val
+end
+
+function set_parent!(node::AbstractNode,nodep::AbstractNode)
+    node.parent=nodep
+end
+
+==(n::AbstractNode, m::AbstractNode) = strip(name(n))== strip(name(m))
