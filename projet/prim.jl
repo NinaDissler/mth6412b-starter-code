@@ -62,5 +62,9 @@ function prim(graph::AbstractGraph{T},s::AbstractNode{T}) where T
         nodeB=Node(name(parent(node)),data(parent(node)))
         add_edge!(graphe_recouvrement,Edge(nodeA,nodeB))
     end
+    
+    @test nb_nodes(graphe_recouvrement)==nb_nodes(graph)
+    @test nb_edges(graphe_recouvrement)==nb_nodes(graph)-1
+    
     graphe_recouvrement
 end
