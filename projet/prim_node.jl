@@ -14,8 +14,8 @@ end
 """ Renvoie le poids minimal pour relier à l'arbre de recouvrement"""
 min_weight(node::AbstractNode)=node.min_weight
 
-""" Renvoie sa priorité dans la file de priorité de l'algorithme de Prim"""
-priority(node::AbstractNode)=node.min_weight
+""" Renvoie sa priorité dans la file de priorité de l'algorithme de Prim, ici l'inverse de sa distance à l'arbre"""
+priority(node::AbstractNode)=(1/node.min_weight)
 
 """ Renvoie le parent du noeud """
 get_parent(node::AbstractNode)=node.parent
