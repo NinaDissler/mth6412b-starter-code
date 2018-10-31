@@ -8,6 +8,7 @@ function compression_des_chemins(tree_global::AbstractTree{T},tree_start::Abstra
     end
     root=tree
     for item in trees
+        delete_sons!(item)
         set_parent!(item,root)
         add_son!(root,item)
     end
