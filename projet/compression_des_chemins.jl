@@ -1,20 +1,4 @@
-# include("tree.jl")
-# include("tree_node.jl")
-# function compression_des_chemins!(tree_global::AbstractTree{T},tree_start::AbstractTree{T}) where T
-#     tree=tree_start
-#     trees=Vector{Tree{T}}([])
-#     while get_parent(tree) != nothing
-#         tree=get_parent(tree)
-#         push!(trees,tree)
-#     end
-#     root=tree
-#     for item in trees
-#         delete_sons!(item)
-#         set_parent!(item,root)
-#         add_son!(root,item)
-#     end
-# end
-
+""" Fonction pour la compression des chemins"""
 function compression_des_chemins!(tree::AbstractTree{})
     flag = true
     sons(tree)==nothing && return tree

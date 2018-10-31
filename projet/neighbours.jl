@@ -10,7 +10,7 @@ function neighbours(ref_node::AbstractNode{T},graph::AbstractGraph{T}) where T
             elseif nodes(edge)[2] == ref_node && nodes(edge)[1]==item
                 push!(list,item)
             end
-            end
+        end
     end
     list
 end
