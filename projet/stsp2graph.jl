@@ -1,13 +1,15 @@
 import Base.show
+using Test
+import Base.length
+
 
 include("node.jl")
 include("edge.jl")
 include("graph.jl")
 include("read_stsp.jl")
-include("../phase2/kruskal.jl")
-filename="./instances/stsp/bayg29.tsp"
 
-function main(filename)
+
+function stsp2graph(filename)
     """ Fichier a trasncrire """
 
     hdr=read_header(filename)
@@ -38,6 +40,5 @@ function main(filename)
         add_edge!(g,Edge(firstnode,secondnode,edgeweight))
     end
 
-    """ Un arbre de recouvrement minimal """
-    show(kruskal(g))
+    g
 end
