@@ -1,4 +1,5 @@
 
+include("node.jl")
 import Base.show
 
 """ Type abstrait dont d'autres types d'arbres deriveront"""
@@ -23,7 +24,7 @@ root(tree::AbstractTree) = tree.root
 sons(tree::AbstractTree) = tree.sons
 
 """Renvoie le parent de l'arbre"""
-parent(tree::AbstractTree) = tree.parent
+get_parent(tree::AbstractTree) = tree.parent
 
 
 """ Affichage d'un arbre"""
@@ -31,7 +32,7 @@ function show(tree::AbstractTree)
     println("Arbre : ", name(tree))
     println("Racine :")
     show(root(tree))
-    str = parent(tree) == nothing ? "aucun" : name(parent(tree))
+    str = get_parent(tree) == nothing ? "aucun" : name(get_parent(tree))
     println("Parent : ",str)
     str = sons(tree) == nothing ? "aucun" : name.(sons(tree))
     println("Enfants : ",str)
