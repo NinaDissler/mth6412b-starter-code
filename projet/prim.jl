@@ -8,7 +8,6 @@ include("prim_node.jl")
 include("prim_priority_queue.jl")
 include("graph.jl")
 include("neighbours.jl")
-# include("build_adj_list.jl")
 include("distance.jl")
 
 function prim(graph::AbstractGraph{T},s::AbstractNode{T}) where T
@@ -16,7 +15,6 @@ function prim(graph::AbstractGraph{T},s::AbstractNode{T}) where T
     @test (s in nodes(graph))
     # Initialisation d'une liste des résultats
     solution=Vector{PrimNode{T}}([])
-    # adj_list = build_adj_list(graph)
     # Initialisation d'une file de priorité vide qui sera modifiée à chaque itération
     q=PrimPriorityQueue{T}([])
     # Remplissage intial de la file avec des noeuds de Prim dont le min weight est Inf et les parents nothing
@@ -55,12 +53,10 @@ function prim(graph::AbstractGraph{T},s::AbstractNode{T}) where T
         end
         q=p
     end
-
-    # @test is_empty(q)
-    # @test length(solution)== nb_nodes(graph)
-    solution
-
-    # Retourne : liste des noeuds avec leur parents et poids de l'arête selectionnée dans l'arbre de recouvrement
+    # On teste si tous les noeuds de la file ont bien été enlevés et transférés dans la liste solution
+    @test is_empty(q)
+    @test length(solution)== nb_nodes(graph)
+    
     # Construction du graphe de recouvrement
     graphe_recouvrement=Graph("Graphe recouvrement",nodes(graph),Vector{Edge{T}}([]))
     for node in solution[2:end]
@@ -68,7 +64,8 @@ function prim(graph::AbstractGraph{T},s::AbstractNode{T}) where T
         nodeB=Node(name(get_parent(node)),data(get_parent(node)))
         add_edge!(graphe_recouvrement,Edge(nodeA,nodeB,distance(nodeA,nodeB,graph)))
     end
-
+    
+    # Pour vérifier qu'il s'agit bien d'un arbre de recouvrement on vérifie : 1) qu'il a autant de noeuds 2) qu'il a N-1 arêtes
     @test nb_nodes(graphe_recouvrement)==nb_nodes(graph)
     @test nb_edges(graphe_recouvrement)==nb_nodes(graph)-1
 
