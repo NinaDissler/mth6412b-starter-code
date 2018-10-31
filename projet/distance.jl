@@ -1,4 +1,4 @@
-function distance(nodeA::AbstractNode,nodeB::AbstractNode,graph::AbstractGraph)
+function distance(nodeA::AbstractNode{T},nodeB::AbstractNode{T},graph::AbstractGraph{T}) where T
   distance = Inf
   for edge in edges(graph)
     if nodes(edge)[1] == nodeA && nodes(edge)[2] == nodeB
