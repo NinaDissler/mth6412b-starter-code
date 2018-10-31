@@ -1,13 +1,13 @@
 include("node.jl")
 import Base.push!
 
-function neighbours(pnode::AbstractNode{T},graph::AbstractGraph{T}) where T
-   list=Vector{AbstractNode}([])
+function neighbours(ref_node::AbstractNode{T},graph::AbstractGraph{T}) where T
+   list=Vector{AbstractNode{T}}([])
    for item in nodes(graph)
         for edge in edges(graph)
-            if nodes(edge)[1] == pnode && nodes(edge)[2]==item
+            if nodes(edge)[1] == ref_node && nodes(edge)[2]==item
                 push!(list,item)
-            elseif nodes(edge)[2] == pnode && nodes(edge)[1]==item
+            elseif nodes(edge)[2] == ref_node && nodes(edge)[1]==item
                 push!(list,item)
             end
             end
