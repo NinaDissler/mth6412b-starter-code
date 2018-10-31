@@ -24,8 +24,8 @@ function set_min_weight!(node::AbstractNode,val::Int64)
     node.min_weight=val
 end
 
-function set_parent!(node::AbstractNode,nodep::AbstractNode)
+function set_parent!(node::AbstractNode{T},nodep::AbstractNode{T}) where T
     node.parent=nodep
 end
 
-==(n::AbstractNode, m::AbstractNode) = strip(name(n))== strip(name(m))
+==(n::AbstractNode{T}, m::AbstractNode{T}) where T = strip(name(n))== strip(name(m))
