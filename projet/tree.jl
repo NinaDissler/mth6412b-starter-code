@@ -51,3 +51,8 @@ function add_son!(parent::AbstractTree{T},son::AbstractTree{T}) where T
         push!(parent.sons,son)
     end
 end
+
+""" Fonction de réinitialisation des enfants à l'ensemble vide"""
+function delete_sons!(tree::AbstractTree)
+    tree.sons=nothing
+end
