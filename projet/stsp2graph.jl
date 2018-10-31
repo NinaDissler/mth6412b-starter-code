@@ -7,11 +7,9 @@ include("node.jl")
 include("edge.jl")
 include("graph.jl")
 include("read_stsp.jl")
-include("kruskal.jl")
-include("prim.jl")
-filename="./instances/stsp/bayg29.tsp"
 
-function main(filename)
+
+function stsp2graph(filename)
     """ Fichier a trasncrire """
 
     hdr=read_header(filename)
@@ -43,7 +41,4 @@ function main(filename)
     end
 
     g
-    # """ Un arbre de recouvrement minimal """
-    # show(kruskal(g))
-    # show(prim(g,g.nodes[1]))
 end
