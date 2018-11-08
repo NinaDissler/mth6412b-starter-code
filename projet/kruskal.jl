@@ -1,5 +1,5 @@
 import Base.show
-import Base.test
+using Test
 
 include("connected-component.jl")
 include("CCfusion.jl")
