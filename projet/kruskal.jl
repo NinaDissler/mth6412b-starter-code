@@ -1,11 +1,11 @@
 import Base.show
+import Base.test
 
 include("connected-component.jl")
 include("CCfusion.jl")
 
 function kruskal(g::Graph)
-    listEdges = edges(g)
-    sortedEdges = sort(listEdges, by = x -> weight(x))
+    sortedEdges = sort(edges(g), by = x -> weight(x))
     sortedGraph = Graph(name(g),nodes(g),sortedEdges)
     CClist = ConnectedComponent[]
     # On parcoure la liste des arêtes
@@ -73,5 +73,8 @@ function kruskal(g::Graph)
             deleteat!(sortedEdges,1)
         end
     end
-    return(CClist[1])
+    
+    @test length(CClist)==1
+    
+    popfirst!(CClist)
 end
