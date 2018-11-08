@@ -1,11 +1,16 @@
-import Base.push!
-
 include("tree.jl")
 
-function preodre(tree::AbstractTree{T},solution::Array{AbstractNode{T}}) where T
-  tree==nothing && return
-  push!(solution,root(tree))
-  for son in sons(tree)
-    preordre(son,solution)
-  end
+""" Fonction de parcours préordre d'un arbre quelconque"""
+function preordre(tree::AbstractTree)
+    tree==nothing && return
+    sol=[]
+    push!(sol,root(tree))
+    if sons(tree)==nothing
+        return root(tree)
+    else
+        for son in sons(tree)
+            sol=hcat(sol,preordre(son))
+        end
+    end
+    sol
 end
