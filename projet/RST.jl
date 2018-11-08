@@ -12,6 +12,9 @@ function RST(graph::AbstractGraph{T},root::AbstractNode{T},choice::Union{"prim",
   " Kruskal : renvoie une composante connexe de type ConnectedComponent"
   choice=="kruskal" && MST=kruskal(graph)
   
+  "Construction d'un arbre à partir de MST"
+  tree=consctruct_tree("Arbre recouvrement", MST, root)
+  
   @test (nb_nodes(MST)!=0)
   @test (nb_edges(MST)!=0)
   
