@@ -1,8 +1,8 @@
+using Test
+
 include("prim.jl")
 include("kruskal.jl")
 include("preordre.jl")
-
-import Base.test
 
 """ Algorithme de Rosenkrantz, Stearns et Lewis de calcul d'une tournée minimale approchée"""
 function RST(graph::AbstractGraph{T},root::AbstractNode{T},choice::Union{"prim","kruskal"}) where T
