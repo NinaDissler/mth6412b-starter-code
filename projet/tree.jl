@@ -38,6 +38,22 @@ function show(tree::AbstractTree)
     println("Enfants : ",str)
 end
 
+""" Un autre affichage plus complet"""
+function show2(tree::AbstractTree)
+    println("///Arbre : ", name(tree))
+    str = get_parent(tree) == nothing ? "aucun" : name(get_parent(tree))
+    println("Parent : ",str)
+    println("Enfants :")
+    if sons(tree) == nothing 
+        println("aucun enfants")
+    else
+        for son in sons(tree)
+            show2(son)
+            println("************")
+        end
+    end
+end
+
 """ Fonction de modification du parent """
 function set_parent!(tree_son::AbstractTree{T},tree_parent::AbstractTree{T}) where T
     tree_son.parent=tree_parent
