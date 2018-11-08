@@ -10,7 +10,8 @@ function RST(graph::AbstractGraph{T},root::AbstractNode{T},choice::Union{"prim",
   choice=="prim" && MST=prim(graph,root)
   choice=="kruskal" && MST=kruskal(graph)
   
-  @test is_not_empty(MST)
+  @test (nb_nodes(MST)!=0)
+  @test (nb_edges(MST)!=0)
   
   " Ordonancement des sommets par parcours en préordre du MST "
   sommets=preordre(MST)
