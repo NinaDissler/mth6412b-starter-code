@@ -1,4 +1,5 @@
 import Base.show
+import Base.copy
 
 include("node.jl")
 include("edge.jl")
@@ -24,20 +25,20 @@ mutable struct Graph{T} <: AbstractGraph{T}
 end
 
 """Ajoute un noeud au graphe."""
-function add_node!(graph::Graph{T}, node::Node{T}) where T
+function add_node!(graph::AbstractGraph{T}, node::AbstractNode{T}) where T
 	push!(graph.nodes, node)
 	graph
 end
 
 """Supprime un noeud du graphe."""
-function delete_node!(graph::Graph{T}, node::Node{T}) where T
+function delete_node!(graph::AbstractGraph{T}, node::AbstractNode{T}) where T
     index=findall(x->x==node,graph.nodes)[1]
     deleteat!(graph.nodes, index)
     graph
 end
 
 """Ajoute une arrête au graphe."""
-function add_edge!(graph::Graph{T}, edge::Edge{T}) where T
+function add_edge!(graph::AbstractGraph{T}, edge::AbstractEdge{T}) where T
 	push!(graph.edges, edge)
 	graph
 end
@@ -74,4 +75,9 @@ function show(graph::Graph)
 	for edge in edges(graph)
 		show(edge)
 	end
+end
+
+function copy(graph::AbstractGraph)
+	g=Graph("copie", copy(nodes(graph)), copy(edges(graph)))
+	g
 end

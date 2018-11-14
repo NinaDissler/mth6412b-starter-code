@@ -2,6 +2,7 @@ import Base.show
 
 """Type representant une composante connexe : herite des méthodes de AbstractGraph"""
 mutable struct ConnectedComponent{T} <: AbstractGraph{T}
+		name::String
         nodes::Vector{Node{T}}
         edges::Vector{Edge{T}}
 end

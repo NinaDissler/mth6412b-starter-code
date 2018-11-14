@@ -26,6 +26,16 @@ e12 = Edge(i,c,2)
 e13 = Edge(c,f,4)
 e14 = Edge(d,f,14)
 
+#For a tree
+# e1 = Edge(a,b,4)
+# e2 = Edge(b,e,8)
+# e3 = Edge(a,c,7)
+# e4 = Edge(d,a,9)
+# e5 = Edge(b,f,10)
+# e6 = Edge(f,h,2)
+# e7 = Edge(g,d,1)
+# e8 = Edge(f,i,8)
+
 graphico = Graph("Small graph", [a,b,c,d,e,f,g,h,i], [e1,e2,e3,e4,e5,e6,e7,e8,e9,e10,e11,e12,e13,e14])
 
 # treeA=Tree("a",a,nothing,nothing)
