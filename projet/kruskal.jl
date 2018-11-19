@@ -3,8 +3,12 @@ using Test
 
 include("connected-component.jl")
 include("CCfusion.jl")
+include("clear_cyclic_edges.jl")
 
-function kruskal(g::Graph)
+function kruskal(graph::Graph)
+    # On enlève les arêtes qui reviennent sur elles même
+    g=copy(graph)
+    clear_cyclic_edges!(g)
     sortedEdges = sort(edges(g), by = x -> weight(x))
     sortedGraph = Graph(name(g),nodes(g),sortedEdges)
     CClist = ConnectedComponent[]
@@ -69,12 +73,12 @@ function kruskal(g::Graph)
 
         # Si l'arête n'est dans aucune CC (ie ses deux noeuds ne sont pas dans une CC) on crée une CC avec et on l'enlève de la liste
         if conditionFirstNode && conditionSecondNode
-            push!(CClist,ConnectedComponent(nodes(edge),[edge]))
+            push!(CClist,ConnectedComponent("NOUVELLECC",nodes(edge),[edge]))
             deleteat!(sortedEdges,1)
         end
     end
-    
+
     @test length(CClist)==1
-    
+
     popfirst!(CClist)
 end

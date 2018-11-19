@@ -1,4 +1,4 @@
-using Plots
+#using Plots
 
 """Analyse un fichier .tsp et renvoie un dictionnaire avec les donnees de l'entete"""
 function read_header(filename::String)
@@ -211,28 +211,28 @@ Exemple :
         plot_graph(graph_nodes, edges)
         savefig("bayg29.pdf")
 """
-function plot_graph(nodes, edges)
-    fig = plot(legend=false)
-
-    # edge positions
-    for k = 1 : length(edges)
-        for j in edges[k]
-            plot!([nodes[k][1], nodes[j][1]], [nodes[k][2], nodes[j][2]],
-                  linewidth=1.5, alpha=0.75, color=:lightgray)
-        end
-    end
-
-    # node positions
-    xys = values(nodes)
-    x = [xy[1] for xy in xys]
-    y = [xy[2] for xy in xys]
-    scatter!(x, y)
-
-    fig
-end
-
-"""Fonction de commodité qui lit un fichier stsp et trace le graphe."""
-function plot_graph(filename::String)
-    graph_nodes, edges = read_stsp(filename)
-    plot_graph(graph_nodes, edges)
-end
+# function plot_graph(nodes, edges)
+#     fig = plot(legend=false)
+#
+#     # edge positions
+#     for k = 1 : length(edges)
+#         for j in edges[k]
+#             plot!([nodes[k][1], nodes[j][1]], [nodes[k][2], nodes[j][2]],
+#                   linewidth=1.5, alpha=0.75, color=:lightgray)
+#         end
+#     end
+#
+#     # node positions
+#     xys = values(nodes)
+#     x = [xy[1] for xy in xys]
+#     y = [xy[2] for xy in xys]
+#     scatter!(x, y)
+#
+#     fig
+# end
+#
+# """Fonction de commodité qui lit un fichier stsp et trace le graphe."""
+# function plot_graph(filename::String)
+#     graph_nodes, edges = read_stsp(filename)
+#     plot_graph(graph_nodes, edges)
+# end

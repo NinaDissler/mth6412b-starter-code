@@ -1,6 +1,7 @@
-# include("tree.jl")
-include("graph.jl")
-include("connected-component.jl")
+#include("tree.jl")
+#include("graph.jl")
+#include("connected-component.jl")
+
 
 function construct_tree(graph::AbstractGraph{T}, root::AbstractNode{T}) where T
     tree=Tree(name(root),root,nothing,nothing)

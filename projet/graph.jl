@@ -43,6 +43,12 @@ function add_edge!(graph::AbstractGraph{T}, edge::AbstractEdge{T}) where T
 	graph
 end
 
+function delete_edge!(graph::AbstractGraph{T}, edge::AbstractEdge{T}) where T
+    index=findall(x->x==edge,graph.edges)[1]
+    deleteat!(graph.edges, index)
+    graph
+end
+
 # on présume que tous les graphes dérivant d'AbstractGraph
 # posséderont des champs `name` et `nodes`.
 
@@ -77,6 +83,7 @@ function show(graph::Graph)
 	end
 end
 
+""" Copie d'un graphe """
 function copy(graph::AbstractGraph)
 	g=Graph("copie", copy(nodes(graph)), copy(edges(graph)))
 	g
