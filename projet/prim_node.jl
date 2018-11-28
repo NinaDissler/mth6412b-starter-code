@@ -1,11 +1,8 @@
 include("node.jl")
-
-import Base.isless,Base.==
-
 mutable struct PrimNode{T} <: AbstractNode{T}
     name::String
     data::T
-    min_weight::Union{Int64,typeof(Inf)}
+    min_weight::Union{Float64,typeof(Inf)}
     parent::Union{PrimNode{T},Nothing}
 end
 
@@ -20,12 +17,10 @@ priority(node::AbstractNode)=(1/node.min_weight)
 """ Renvoie le parent du noeud """
 get_parent(node::AbstractNode)=node.parent
 
-function set_min_weight!(node::AbstractNode,val::Int64)
+function set_min_weight!(node::AbstractNode,val::Float64)
     node.min_weight=val
 end
 
 function set_parent!(node::AbstractNode{T},nodep::AbstractNode{T}) where T
     node.parent=nodep
 end
-
-==(n::AbstractNode{T}, m::AbstractNode{T}) where T = strip(name(n))== strip(name(m))
