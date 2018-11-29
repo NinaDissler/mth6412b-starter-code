@@ -1,4 +1,3 @@
-include("node.jl")
 import Base.push!
 
 function neighbours(ref_node::AbstractNode{T},graph::AbstractGraph{T}) where T

@@ -1,4 +1,6 @@
 import Base.show
+import Base.isless,Base.==
+import Base.copy
 
 """Type abstrait dont d'autres types de noeuds dériveront."""
 abstract type AbstractNode{T} end
@@ -21,7 +23,7 @@ end
 # posséderont des champs `name` et `data`.
 
 """Renvoie le nom du noeud."""
-name(node::AbstractNode) = string(node.name," ")
+name(node::AbstractNode) = string(node.name)
 
 """Renvoie les données contenues dans le noeud."""
 data(node::AbstractNode) = node.data
@@ -30,4 +32,13 @@ data(node::AbstractNode) = node.data
 function show(node::AbstractNode)
     s = string("Node: ", name(node), ", Data: ", data(node))
     println(s)
+end
+
+""" Égalité entre deux noeuds"""
+==(n::AbstractNode{T}, m::AbstractNode{T}) where T = strip(name(n))==strip(name(m))
+
+""" Copie d'un noeud"""
+function copy(node::AbstractNode)
+	n=Node(name(node),copy(data(node)))
+	n
 end
