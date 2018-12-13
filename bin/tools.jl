@@ -79,7 +79,7 @@ function reconstruct_picture(tour_filename::String, input_name::String, output_n
 	end
 	close(file)
 	shuffled_picture = load(input_name)
-	reconstructed_picture = shuffled_picture[:,tour[2:end]]
+	reconstructed_picture = shuffled_picture[:,tour[2:end-1]]
 	view && imshow(reconstructed_picture)
 	save(output_name, reconstructed_picture)
 end
